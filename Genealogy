@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Family Tree — Kyle Patrick Carver</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+
+  <!-- Apple Touch Icons - multiple sizes for compatibility -->
+  <link rel="apple-touch-icon" href="IMG_0181.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="IMG_0181.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="IMG_0181.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="IMG_0181.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="IMG_0181.png">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0e0e11;
+      color: #e7e7e7;
+      font-family: "Courier Prime", monospace;
+      max-width: 860px;
+      margin: 90px auto;
+      line-height: 1.7;
+      padding: 0 20px 80px;
+    }
+
+    a { color: #9ad1ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    h1 { font-size: 38px; margin-bottom: 0; }
+
+    .subtitle {
+      opacity: 0.4;
+      font-size: 14px;
+      margin-bottom: 60px;
+    }
+
+    /* ── Tree structure ── */
+    ul.tree {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.tree ul {
+      list-style: none;
+      padding-left: 28px;
+      margin-left: 12px;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    ul.tree li {
+      position: relative;
+      padding: 3px 0;
+      transition: opacity 0.2s;
+    }
+
+    /* Horizontal connector from vertical line to card */
+    ul.tree ul > li::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 18px;
+      width: 20px;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ── Person card ── */
+    .person {
+      display: inline-flex;
+      flex-direction: column;
+      padding: 7px 14px;
+      border: 1px solid rgba(255,255,255,0.09);
+      cursor: default;
+      transition: border-color 0.2s, background 0.2s;
+      max-width: 340px;
+    }
+
+    .person:hover {
+      border-color: rgba(154, 209, 255, 0.4);
+      background: rgba(154, 209, 255, 0.04);
+    }
+
+    .person.me {
+      border-color: #9ad1ff;
+    }
+
+    /* Dimmed state when someone else is hovered */
+    ul.tree li.dimmed .person {
+      opacity: 0.2;
+    }
+    ul.tree li.dimmed .person:hover {
+      opacity: 1;
+    }
+
+    /* Highlighted ancestors/descendants */
+    ul.tree li.lit .person {
+      border-color: rgba(154, 209, 255, 0.5);
+      background: rgba(154, 209, 255, 0.05);
+    }
+    ul.tree ul.lit-branch {
+      border-left-color: rgba(154, 209, 255, 0.3);
+    }
+
+    .person-name {
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 1.3;
+    }
+
+    .person-dates {
+      font-size: 11px;
+      opacity: 0.38;
+    }
+
+    .person-note {
+      font-size: 11px;
+      opacity: 0.5;
+      line-height: 1.3;
+    }
+
+    .person-link {
+      font-size: 10px;
+      color: #9ad1ff;
+      opacity: 0.5;
+      margin-top: 2px;
+      display: inline-block;
+    }
+    .person-link:hover { opacity: 1; }
+
+    /* Couple bracket */
+    .couple {
+      display: inline-flex;
+      align-items: stretch;
+      gap: 0;
+    }
+    .couple .person { border-right: none; }
+    .couple .person:last-child { border-right: 1px solid rgba(255,255,255,0.09); }
+    .couple-x {
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      font-size: 10px;
+      opacity: 0.2;
+      border-top: 1px solid rgba(255,255,255,0.09);
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* Generation label */
+    .gen-marker {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.2;
+      margin-bottom: 4px;
+      padding-left: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<a href="/">← home</a>
+
+<h1 style="margin-top:40px;">FAMILY TREE</h1>
+<p class="subtitle">Dinneen / Carver — Ireland to America. Hover any person to trace their line.</p>
+
+<ul class="tree" id="tree">
+
+  <!-- GEN I -->
+  <li data-id="root">
+    <div class="gen-marker">Generation I</div>
+    <div class="couple">
+      <div class="person" data-id="denis-sr">
+        <div class="person-name">Denis Dinneen</div>
+        <div class="person-dates">??? – 1928</div>
+        <div class="person-note">Ireland</div>
+        <a class="person-link" href="" target="_blank">+ add link</a>
+      </div>
+      <div class="couple-x">×</div>
+      <div class="person" data-id="nora">
+        <div class="person-name">Nora Lynch</div>
+        <div class="person-dates">1862 – 1944</div>
+        <div class="person-note">Ireland</div>
+        <a class="person-link" href="" target="_blank">+ add link</a>
+      </div>
+    </div>
+
+    <!-- GEN II -->
+    <ul>
+
+      <li data-id="jeremiah">
+        <div class="gen-marker">Generation II — Child 1</div>
+        <div class="person">
+          <div class="person-name">Jeremiah Dinneen</div>
+          <div class="person-dates">1892 – 1969</div>
+          <div class="person-note">m. Julia · Ireland</div>
+          <a class="person-link" href="" target="_blank">+ add link</a>
+        </div>
+        <ul>
+          <li data-id="jerry-twomey">
+            <div class="gen-marker">Generation III</div>
+            <div class="person">
+              <div class="person-name">Jerry Twomey</div>
+              <div class="person-dates">b. 1929 – d. 1990</div>
+              <a class="person-link" href="" target="_blank">+ add link</a>
+            </div>
+          </li>
+          <li data-id="con-twomey">
+            <div class="person">
+              <div class="person-name">Con Twomey</div>
+              <div class="person-dates">b. 1935</div>
+              <div class="person-note">m. Mary O'Leery · 5 children</div>
+              <a class="person-link" href="" target="_blank">+ add link</a>
+            </div>
+          </li>
+          <li data-id="jack-twomey">
+            <div class="person">
+              <div class="person-name">John (Jack) Twomey</div>
+              <div class="person-note">m. Mary (Manning)</div>
+              <a class="person-link" href="" target="_blank">+ add link</a>
+            </div>
+            <ul>
+              <li data-id="patrick-twomey">
+                <div class="gen-marker">Generation IV</div>
+                <div class="person">
+                  <div class="person-name">Patrick Twomey</div>
+                  <a class="person-link" href="" target="_blank">+ add link</a>
+                </div>
+                <ul>
+                  <li data-id="patrick-child1"><div class="person"><div class="person-name">Patrick</div><div class="person-dates">b. 1961</div></div></li>
+                  <li data-id="patrick-child2"><div class="person"><div class="person-name">Martin</div><div class="person-dates">b. 1963</div></div></li>
+                  <li data-id="patrick-child3"><div class="person"><div class="person-name">Mary</div><div class="person-dates">b. 1964</div></div></li>
+                  <li data-id="patrick-child4"><div class="person"><div class="person-name">Sioehain</div><div class="person-dates">b. 1968</div></div></li>
+                  <li data-id="patrick-child5"><div class="person"><div class="person-name">Gobnait</div><div class="person-dates">b. 1971</div></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li data-id="mary-dinneen">
+        <div class="gen-marker">Generation II — Child 2</div>
+        <div class="person">
+          <div class="person-name">Mary Dinneen</div>
+          <div class="person-dates">?? – 1978</div>
+          <a class="person-link" href="" target="_blank">+ add link</a>
+        </div>
+      </li>
+
+      <li data-id="julia-dinneen">
+        <div class="gen-marker">Generation II — Child 3</div>
+        <div class="person">
+          <div class="person-name">Julia Dinneen</div>
+          <div class="person-dates">?? – 1975</div>
+          <div class="person-note">Came to USA</div>
+          <a class="person-link" href="" target="_blank">+ add link</a>
+        </div>
+        <ul>
+          <li data-id="veronica">
+            <div class="gen-marker">Generation III</div>
+            <div class="couple">
+              <div class="person">
+                <div class="person-name">Veronica Rowley</div>
+                <div class="person-dates">b. 1927 – d. 1990</div>
+                <a class="person-link" href="" target="_blank">+ add link</a>
+              </div>
+              <div class="couple-x">×</div>
+              <div class="person">
+                <div class="person-name">James McDermott</div>
+                <a class="person-link" href="" target="_blank">+ add link</a>
+              </div>
+            </div>
+            <ul>
+              <li data-id="jerry-mcdermott">
+                <div class="gen-marker">Generation IV</div>
+                <div class="person">
+                  <div class="person-name">Jerry McDermott</div>
+                  <div class="person-dates">b. 07-26-1953</div>
+                  <div class="person-note">m. Darlene</div>
+                  <a class="person-link" href="" target="_blank">+ add link</a>
+                </div>
+              </li>
+              <li data-id="jessica">
+                <div class="person">
+                  <div class="person-name">Jessica McDermott</div>
+                  <div class="person-note">m. Seth Fritz</div>
+                  <a class="person-link" href="" target="_blank">+ add link</a>
+                </div>
+                <ul>
+                  <li data-id="luke"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Luke Fritz</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li data-id="hugh-rowley">
+            <div class="person">
+              <div class="person-name">Hugh Rowley</div>
+              <a class="person-link" href="" target="_blank">+ add link</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li data-id="patrick-dinneen">
+        <div class="gen-marker">Generation II — Child 4</div>
+        <div class="person">
+          <div class="person-name">Patrick Dinneen</div>
+          <div class="person-note">Came to USA</div>
+          <a class="person-link" href="" target="_blank">+ add link</a>
+        </div>
+      </li>
+
+      <li data-id="john-dineen">
+        <div class="gen-marker">Generation II — Child 5</div>
+        <div class="couple">
+          <div class="person">
+            <div class="person-name">John Dineen</div>
+            <div class="person-dates">1898 – 1975</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+          <div class="couple-x">×</div>
+          <div class="person">
+            <div class="person-name">Julia Creedon</div>
+            <div class="person-dates">1902 – 1988</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+        </div>
+        <ul>
+          <li data-id="mary-dineen"><div class="gen-marker">Generation III</div><div class="person"><div class="person-name">Mary Dineen</div><div class="person-note">m. Joe Devine</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="joseph-dineen"><div class="person"><div class="person-name">Joseph Dineen</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="anthony-dineen"><div class="person"><div class="person-name">Anthony Dineen</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="sheila-dineen"><div class="person"><div class="person-name">Sheila Dineen</div><div class="person-dates">b. 1964</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="catherine-dineen"><div class="person"><div class="person-name">Catherine Dineen</div><div class="person-dates">b. 1968</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="denis-dineen-jr"><div class="person"><div class="person-name">Denis Dineen Jr.</div><div class="person-dates">b. 1974</div><div class="person-note">m. Josephine</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+            <ul>
+              <li data-id="patrick-b"><div class="gen-marker">Generation IV</div><div class="person"><div class="person-name">Patrick</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+              <li data-id="mary-katherine"><div class="person"><div class="person-name">Mary Katherine</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+            </ul>
+          </li>
+          <li data-id="marian-dineen"><div class="person"><div class="person-name">Marian Dineen</div><div class="person-dates">b. 1979</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="patrick-dineen-1934"><div class="person"><div class="person-name">Patrick Dineen</div><div class="person-dates">b. 1934</div><div class="person-note">m. Mary Doolan</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="sheila-1938"><div class="person"><div class="person-name">Sheila Dineen</div><div class="person-dates">b. 1938</div><div class="person-note">m. Donal Lynch</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+            <ul>
+              <li data-id="john-64"><div class="gen-marker">Generation IV</div><div class="person"><div class="person-name">John</div><div class="person-dates">b. 1964</div></div></li>
+              <li data-id="nelius-66"><div class="person"><div class="person-name">Nelius</div><div class="person-dates">b. 1966</div></div></li>
+              <li data-id="donal-69"><div class="person"><div class="person-name">Donal</div><div class="person-dates">b. 1969</div></div></li>
+              <li data-id="margie-71"><div class="person"><div class="person-name">Margie</div><div class="person-dates">b. 1971</div></div></li>
+              <li data-id="sheila-73"><div class="person"><div class="person-name">Sheila</div><div class="person-dates">b. 1973</div></div></li>
+            </ul>
+          </li>
+          <li data-id="con-1940"><div class="person"><div class="person-name">Con Dineen</div><div class="person-dates">b. 1940</div><div class="person-note">m. Maureen</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+            <ul>
+              <li data-id="john-68"><div class="gen-marker">Generation IV</div><div class="person"><div class="person-name">John</div><div class="person-dates">b. 1968</div></div></li>
+              <li data-id="timmy-69"><div class="person"><div class="person-name">Timmy</div><div class="person-dates">b. 1969</div></div></li>
+              <li data-id="veronica-72"><div class="person"><div class="person-name">Veronica</div><div class="person-dates">b. 1972</div></div></li>
+              <li data-id="juliette-76"><div class="person"><div class="person-name">Juliette</div><div class="person-dates">b. 1976</div></div></li>
+            </ul>
+          </li>
+          <li data-id="christy-1940"><div class="person"><div class="person-name">Christy Dineen</div><div class="person-dates">b. 1940</div><div class="person-note">m. Noreen</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+            <ul>
+              <li data-id="theresa-76"><div class="gen-marker">Generation IV</div><div class="person"><div class="person-name">Theresa</div><div class="person-dates">b. 1976</div></div></li>
+              <li data-id="dermot-77"><div class="person"><div class="person-name">Dermot</div><div class="person-dates">b. 1977</div></div></li>
+              <li data-id="denis-79"><div class="person"><div class="person-name">Denis</div><div class="person-dates">b. 1979</div></div></li>
+              <li data-id="david-85"><div class="person"><div class="person-name">David</div><div class="person-dates">b. 1985</div></div></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li data-id="margaret-dineen">
+        <div class="gen-marker">Generation II — Child 6</div>
+        <div class="couple">
+          <div class="person">
+            <div class="person-name">Margaret Dineen</div>
+            <div class="person-dates">?? – 1982</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+          <div class="couple-x">×</div>
+          <div class="person">
+            <div class="person-name">Jeremiah O'Riordan</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+        </div>
+        <ul>
+          <li data-id="denis-oriordan"><div class="gen-marker">Generation III</div><div class="person"><div class="person-name">Denis O'Riordan</div><div class="person-dates">b. 1928</div><div class="person-note">m. Claire · 5 children</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+          <li data-id="noreen-oriordan"><div class="person"><div class="person-name">Noreen O'Riordan</div><div class="person-dates">b. 1959</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+        </ul>
+      </li>
+
+      <li data-id="helen-dinneen">
+        <div class="gen-marker">Generation II — Child 7</div>
+        <div class="couple">
+          <div class="person">
+            <div class="person-name">Helen Dinneen</div>
+            <div class="person-dates">1902 – 1986</div>
+            <div class="person-note">Came to USA</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+          <div class="couple-x">×</div>
+          <div class="person">
+            <div class="person-name">Vernon Byrons</div>
+            <div class="person-dates">1908 – 1999</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+        </div>
+        <ul>
+
+          <li data-id="noreen-byrons">
+            <div class="gen-marker">Generation III</div>
+            <div class="couple">
+              <div class="person">
+                <div class="person-name">Noreen Byrons</div>
+                <div class="person-dates">b. 04-29-1939</div>
+                <a class="person-link" href="" target="_blank">+ add link</a>
+              </div>
+              <div class="couple-x">×</div>
+              <div class="person">
+                <div class="person-name">Edmund Carver</div>
+                <a class="person-link" href="" target="_blank">+ add link</a>
+              </div>
+            </div>
+            <ul>
+              <li data-id="david-carver">
+                <div class="gen-marker">Generation IV</div>
+                <div class="couple">
+                  <div class="person"><div class="person-name">David Carver</div><div class="person-dates">b. 05-20-1960</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                  <div class="couple-x">×</div>
+                  <div class="person"><div class="person-name">Penny Shoulders</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                </div>
+                <ul>
+                  <li data-id="christopher"><div class="gen-marker">Generation V</div><div class="couple"><div class="person"><div class="person-name">Christopher Carver</div><div class="person-dates">b. 04-04-1980</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">Kate Polowy</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                    <ul>
+                      <li data-id="quinn"><div class="gen-marker">Generation VI</div><div class="person"><div class="person-name">Quinn Marie</div><div class="person-dates">b. 10-16-2012</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                    </ul>
+                  </li>
+                  <li data-id="megan-carver"><div class="person"><div class="person-name">Megan Carver</div><div class="person-dates">b. 12-17-1990</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="andrew-carver"><div class="person"><div class="person-name">Andrew Carver</div><div class="person-dates">b. 05-18-1994</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="kevin-carver">
+                <div class="couple">
+                  <div class="person"><div class="person-name">Kevin Carver</div><div class="person-dates">b. 09-27-1960</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                  <div class="couple-x">×</div>
+                  <div class="person"><div class="person-name">Donna Willis</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                </div>
+              </li>
+              <li data-id="janine-carver">
+                <div class="couple">
+                  <div class="person"><div class="person-name">Janine Carver</div><div class="person-dates">b. 05-08-1963</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                  <div class="couple-x">×</div>
+                  <div class="person"><div class="person-name">John Reister</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                </div>
+              </li>
+              <li data-id="brian-carver">
+                <div class="couple">
+                  <div class="person">
+                    <div class="person-name">Brian Carver</div>
+                    <div class="person-dates">b. 05-10-1964</div>
+                    <a class="person-link" href="" target="_blank">+ add link</a>
+                  </div>
+                  <div class="couple-x">×</div>
+                  <div class="person">
+                    <div class="person-name">Beth Mayeux</div>
+                    <a class="person-link" href="" target="_blank">+ add link</a>
+                  </div>
+                </div>
+                <ul>
+                  <li data-id="kyle-carver">
+                    <div class="gen-marker">Generation V</div>
+                    <div class="person me">
+                      <div class="person-name">Kyle Patrick Carver</div>
+                      <div class="person-dates">b. 11-20-2002</div>
+                      <a class="person-link" href="https://kylepatrickcarver.github.io" target="_blank">kylepatrickcarver.github.io</a>
+                    </div>
+                  </li>
+                  <li data-id="colleen-carver">
+                    <div class="person">
+                      <div class="person-name">Colleen Carver</div>
+                      <div class="person-dates">b. 03-06-2008</div>
+                      <a class="person-link" href="" target="_blank">+ add link</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li data-id="kim-carver">
+                <div class="couple">
+                  <div class="person"><div class="person-name">Kim Carver</div><div class="person-dates">b. 04-03-1972</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                  <div class="couple-x">×</div>
+                  <div class="person"><div class="person-name">Jason Colvin</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+                </div>
+                <ul>
+                  <li data-id="skylar"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Skylar Colvin</div><div class="person-dates">b. 08-10-1999</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="reese"><div class="person"><div class="person-name">Reese Colvin</div><div class="person-dates">b. 08-24-2004</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="brody"><div class="person"><div class="person-name">Brody Colvin</div><div class="person-dates">b. 01-25-2008</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li data-id="arthur-byrons">
+            <div class="couple">
+              <div class="person"><div class="person-name">Arthur Byrons</div><div class="person-dates">b. 05-28-1940</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+              <div class="couple-x">×</div>
+              <div class="person"><div class="person-name">Sheila McArdle</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+            </div>
+          </li>
+
+          <li data-id="james-byrons">
+            <div class="couple">
+              <div class="person"><div class="person-name">James Byrons</div><div class="person-dates">03-16-1943 – 08-26-2018</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+              <div class="couple-x">×</div>
+              <div class="person"><div class="person-name">Carrie Sutton</div><a class="person-link" href="" target="_blank">+ add link</a></div>
+            </div>
+            <ul>
+              <li data-id="daniel-byrons"><div class="gen-marker">Generation IV</div><div class="couple"><div class="person"><div class="person-name">Daniel Byrons</div><div class="person-dates">b. 01-03-1964</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">Tammy Lynn Coleman</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="kyle-byrons"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Kyle Byrons</div><div class="person-dates">b. 12-04-1988</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="sierra"><div class="person"><div class="person-name">Sierra Byrons</div><div class="person-dates">b. 08-20-1995</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="lillian"><div class="person"><div class="person-name">Lillian Byrons</div><div class="person-dates">b. 03-25-1997</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="kendall"><div class="person"><div class="person-name">Kendall Byrons</div><div class="person-dates">b. 03-25-1997</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="terrence-byrons"><div class="couple"><div class="person"><div class="person-name">Terrence Byrons</div><div class="person-dates">b. 04-18-1967</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">Leah Ellen Osterhoudt</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="liam"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Liam Byrons</div><div class="person-dates">b. 01-18-2007</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="case"><div class="person"><div class="person-name">Case Byrons</div><div class="person-dates">b. 02-16-2009</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="kian"><div class="person"><div class="person-name">Kian Byrons</div><div class="person-dates">b. 10-11-2011</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="linda-byrons"><div class="person"><div class="person-name">Linda Byrons</div><div class="person-dates">b. 07-15-1968</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+              <li data-id="christine-byrons"><div class="couple"><div class="person"><div class="person-name">Christine Byrons</div><div class="person-dates">b. 08-07-1969</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">Scott Richard Goudreau</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="taylor"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Taylor Goudreau</div><div class="person-dates">b. 05-19-1995</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="travis"><div class="person"><div class="person-name">Travis Goudreau</div><div class="person-dates">b. 09-24-1997</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="gabrielle"><div class="person"><div class="person-name">Gabrielle Goudreau</div><div class="person-dates">b. 01-30-2000</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="hannah"><div class="person"><div class="person-name">Hannah Goudreau</div><div class="person-dates">b. 06-29-2004</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="rebecca-g"><div class="person"><div class="person-name">Rebecca Goudreau</div><div class="person-dates">b. 11-25-2006</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="jennifer-byrons"><div class="couple"><div class="person"><div class="person-name">Jennifer Byrons</div><div class="person-dates">b. 11-04-1972</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">Kevin Francis Quirk</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="matthew"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Matthew Quirk</div><div class="person-dates">b. 07-22-2002</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="maggie"><div class="person"><div class="person-name">Maggie Quirk</div><div class="person-dates">b. 03-12-2004</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="christina"><div class="person"><div class="person-name">Christina Quirk</div><div class="person-dates">b. 02-13-2006</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="connor"><div class="person"><div class="person-name">Connor Quirk</div><div class="person-dates">b. 11-24-2008</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="catherine-q"><div class="person"><div class="person-name">Catherine Quirk</div><div class="person-dates">b. 03-11-2011</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="peter-byrons"><div class="couple"><div class="person"><div class="person-name">Peter Byrons</div><div class="person-dates">b. 02-01-1976</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">Alison Marie Muenkel</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="michaela"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Michaela Byrons</div><div class="person-dates">b. 02-27-2005</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="aileen"><div class="person"><div class="person-name">Aileen Byrons</div><div class="person-dates">b. 08-07-2006</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="aedan"><div class="person"><div class="person-name">Aedan Byrons</div><div class="person-dates">b. 09-09-2011</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="kierra"><div class="person"><div class="person-name">Kierra Byrons</div><div class="person-dates">b. 10-11-2013</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="rebecca-byrons"><div class="couple"><div class="person"><div class="person-name">Rebecca Byrons</div><div class="person-dates">b. 12-23-1976</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">William Christopher Donaghy</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="seth-d"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Seth Donaghy</div><div class="person-dates">b. 09-05-2008</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="grace-d"><div class="person"><div class="person-name">Grace Donaghy</div><div class="person-dates">b. 01-04-2009</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="clare-d"><div class="person"><div class="person-name">Clare Donaghy</div><div class="person-dates">b. 08-13-2010</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="sheila-d"><div class="person"><div class="person-name">Sheila Donaghy</div><div class="person-dates">b. 11-17-2012</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="tim-byrons"><div class="couple"><div class="person"><div class="person-name">Tim Byrons</div><div class="person-dates">b. 10-02-1978</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">April Lynn Harris</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="emily"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Emily Byrons</div><div class="person-dates">b. 07-16-2012</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="sean-byrons"><div class="person"><div class="person-name">Sean Byrons</div><div class="person-dates">b. 05-28-1994</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+              <li data-id="theresa-byrons"><div class="couple"><div class="person"><div class="person-name">Theresa Byrons</div><div class="person-dates">b. 10-22-1980</div><a class="person-link" href="" target="_blank">+ add link</a></div><div class="couple-x">×</div><div class="person"><div class="person-name">Anthony Fischetta III</div><a class="person-link" href="" target="_blank">+ add link</a></div></div>
+                <ul>
+                  <li data-id="scarlett"><div class="gen-marker">Generation V</div><div class="person"><div class="person-name">Scarlett Fischetta</div><div class="person-dates">b. 05-22-2012</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="landon"><div class="person"><div class="person-name">Landon Fischetta</div><div class="person-dates">b. 10-15-2013</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="declan"><div class="person"><div class="person-name">Declan Fischetta</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                  <li data-id="violett"><div class="person"><div class="person-name">Violett Fischetta</div><a class="person-link" href="" target="_blank">+ add link</a></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+
+      <li data-id="denis-dinneen-8">
+        <div class="gen-marker">Generation II — Child 8</div>
+        <div class="person">
+          <div class="person-name">Denis Dinneen</div>
+          <div class="person-dates">1903 – 1975</div>
+          <a class="person-link" href="" target="_blank">+ add link</a>
+        </div>
+      </li>
+
+      <li data-id="michael-dinneen">
+        <div class="gen-marker">Generation II — Child 9</div>
+        <div class="couple">
+          <div class="person">
+            <div class="person-name">Michael Dinneen</div>
+            <div class="person-dates">d. 1968</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+          <div class="couple-x">×</div>
+          <div class="person">
+            <div class="person-name">Frances Keans</div>
+            <a class="person-link" href="" target="_blank">+ add link</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </li>
+</ul>
+
+<p style="margin: 60px 0 20px; font-size: 12px; opacity: 0.2; text-align:center;">
+  Dinneen / Carver family archive — incomplete, being added to
+</p>
+
+<script>
+  const allLi = document.querySelectorAll('ul.tree li');
+
+  function getAncestors(el) {
+    const ancestors = [];
+    let cur = el.parentElement;
+    while (cur) {
+      if (cur.tagName === 'LI') ancestors.push(cur);
+      cur = cur.parentElement;
+    }
+    return ancestors;
+  }
+
+  function getDescendants(el) {
+    return Array.from(el.querySelectorAll('li'));
+  }
+
+  allLi.forEach(li => {
+    li.addEventListener('mouseenter', (e) => {
+      e.stopPropagation();
+      const ancestors = getAncestors(li);
+      const descendants = getDescendants(li);
+      const lit = new Set([li, ...ancestors, ...descendants]);
+
+      allLi.forEach(other => {
+        if (lit.has(other)) {
+          other.classList.add('lit');
+          other.classList.remove('dimmed');
+        } else {
+          other.classList.add('dimmed');
+          other.classList.remove('lit');
+        }
+      });
+
+      // highlight connecting branches
+      document.querySelectorAll('ul.tree ul').forEach(ul => {
+        ul.classList.remove('lit-branch');
+      });
+      ancestors.forEach(a => {
+        const childUl = a.querySelector(':scope > ul');
+        if (childUl) childUl.classList.add('lit-branch');
+      });
+    });
+
+    li.addEventListener('mouseleave', (e) => {
+      if (!e.relatedTarget || !li.contains(e.relatedTarget)) {
+        allLi.forEach(other => {
+          other.classList.remove('lit', 'dimmed');
+        });
+        document.querySelectorAll('ul.tree ul').forEach(ul => {
+          ul.classList.remove('lit-branch');
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
