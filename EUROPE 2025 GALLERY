@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Europe 2025 Gallery — Kyle Patrick Carver</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+
+  <!-- Apple Touch Icons - multiple sizes for compatibility -->
+  <link rel="apple-touch-icon" href="IMG_0181.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="IMG_0181.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="IMG_0181.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="IMG_0181.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="IMG_0181.png">
+
+  <style>
+    body {
+      background: #f5f0e8;
+      color: #0e0e11;
+      font-family: "Courier Prime", monospace;
+      max-width: 780px;
+      margin: 90px auto;
+      line-height: 1.7;
+      text-align: center;
+      padding: 0 20px;
+    }
+    h1 { font-size: 38px; margin-bottom: 0; }
+    p { margin: 0; }
+    .back {
+      display: inline-block;
+      margin: 20px 0 60px 0;
+      text-decoration: none;
+      color: #0e0e11;
+      opacity: 0.45;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    .back:hover { opacity: 1; }
+    .collage {
+      column-count: 3;
+      column-gap: 18px;
+      text-align: left;
+    }
+    @media (max-width: 560px) {
+      .collage { column-count: 2; }
+    }
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .photo-item.tall img { aspect-ratio: 3/4; }
+    .photo-item.wide img { aspect-ratio: 4/3; }
+    .photo-item.square img { aspect-ratio: 1/1; }
+    .photo-item img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .caption {
+      font-size: 12px;
+      color: #0e0e11;
+      opacity: 0.45;
+      margin-top: 5px;
+      font-family: "Courier Prime", monospace;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+<h1>EUROPE 2025 GALLERY</h1>
+<p>A visual record.</p>
+<a class="back" href="/index.html">← back</a>
+<div class="collage">
+  <div class="photo-item tall">
+    <img src="YOUR_PHOTO_1.jpg" alt="">
+    <div class="caption">June 3 · Paris · Kyle</div>
+  </div>
+  <div class="photo-item square">
+    <img src="YOUR_PHOTO_2.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item wide">
+    <img src="YOUR_PHOTO_3.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item square">
+    <img src="YOUR_PHOTO_4.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item tall">
+    <img src="YOUR_PHOTO_5.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item wide">
+    <img src="YOUR_PHOTO_6.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item wide">
+    <img src="YOUR_PHOTO_7.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item square">
+    <img src="YOUR_PHOTO_8.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item tall">
+    <img src="YOUR_PHOTO_9.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item square">
+    <img src="YOUR_PHOTO_10.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item wide">
+    <img src="YOUR_PHOTO_11.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+  <div class="photo-item tall">
+    <img src="YOUR_PHOTO_12.jpg" alt="">
+    <div class="caption">Date · Place · People</div>
+  </div>
+</div>
+</body>
+</html>
